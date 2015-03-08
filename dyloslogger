@@ -45,7 +45,7 @@ if(-e "/DEBUG"){
 
 my $store_to_file  = 1; # Write to logfile
 my $store_to_http  = 0; # Post each to http
-my $store_to_http1 = 1; # Post complete log to http hourly, clear log
+my $store_to_http1 = 0; # Post complete log to http hourly, clear log
 
 if($debug){
 	print "Debug mode on\n";
@@ -138,8 +138,8 @@ while(1){
 			$large_total /= 100;
 		}
 
-		my $percent_small = &diff_in_percent($old_small,$small);
-		my $percent_large = &diff_in_percent($old_large,$large);
+		my $percent_small = &diff_in_percent($small,$old_small);
+		my $percent_large = &diff_in_percent($large,$old_large);
 
 		if($large > 1000){
 			if($percent_large > 100){
